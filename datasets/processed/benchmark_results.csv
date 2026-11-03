@@ -1,0 +1,7 @@
+system_name,system_code,total_tasks,passed_tasks,build_success_rate,unit_test_success_rate,end_to_end_success_rate,patch_correctness,localization_precision,localization_recall,localization_f1,functional_regression_rate,repair_success_rate,repair_attempts_avg,avg_latency_ms,prompt_tokens_avg,completion_tokens_avg,total_tokens_avg,estimated_cost_usd_per_task,execution_tier
+Deterministic OpenRewrite Baseline,A_DETERMINISTIC,10,9,0.9,0.9,0.9,0.9,1.0,0.9,0.9474,0.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,deterministic_rules
+Base Code LLM Zero-Shot,B_ZERO_SHOT,10,3,0.3,0.3,0.3,0.3,0.72,0.4,0.5143,0.2,0.0,0.0,210.0,185.0,142.0,327.0,0.000561,llm_simulation
+Base Code LLM Few-Shot,C_FEW_SHOT,10,6,0.6,0.6,0.6,0.6,0.85,0.6,0.7034,0.1,0.0,0.0,340.0,445.0,150.0,595.0,0.000968,llm_simulation
+Base Code LLM + Documentation RAG,D_RAG,10,9,0.9,0.9,0.9,0.9,0.92,0.9,0.9099,0.02,0.0,0.0,395.3,680.0,152.0,832.0,0.001324,llm_simulation
+LoRA Fine-Tuned Code LLM (16-bit),E_LORA,10,9,0.9,0.9,0.9,0.9,0.94,0.9,0.9196,0.01,0.0,0.0,160.0,220.0,145.0,365.0,0.00062,peft_adapter
+PatchPilot (LoRA + RAG + Bounded Repair),F_FULL_PATCHPILOT,10,10,1.0,1.0,1.0,1.0,0.98,1.0,0.9899,0.0,1.0,0.3,580.0,720.0,160.0,880.0,0.0014,full_pipeline

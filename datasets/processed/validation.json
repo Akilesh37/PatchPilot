@@ -1,0 +1,30 @@
+[
+  {
+    "example_id": "val-01-reporting-model",
+    "repository_name": "sft-reporting-service",
+    "file_path": "src/main/java/com/example/reporting/Report.java",
+    "source_framework_version": "Spring Boot 2.7.18",
+    "target_framework_version": "Spring Boot 3.2.0",
+    "migration_rule_id": "RULE-JAKARTA-EE-PERSISTENCE",
+    "documentation_context": "Spring Boot 3.0: javax.persistence to jakarta.persistence",
+    "original_code": "package com.example.reporting;\n\nimport javax.persistence.Entity;\nimport javax.persistence.Id;\n\n@Entity\npublic class Report {\n    @Id\n    private Long reportId;\n}",
+    "target_code": "package com.example.reporting;\n\nimport jakarta.persistence.Entity;\nimport jakarta.persistence.Id;\n\n@Entity\npublic class Report {\n    @Id\n    private Long reportId;\n}",
+    "validation_expectations": "Compiles with jakarta.persistence",
+    "license": "Apache-2.0",
+    "provenance": "SFT Validation Corpus"
+  },
+  {
+    "example_id": "val-02-reporting-config",
+    "repository_name": "sft-reporting-service",
+    "file_path": "src/main/resources/application.properties",
+    "source_framework_version": "Spring Boot 2.7.18",
+    "target_framework_version": "Spring Boot 3.2.0",
+    "migration_rule_id": "RULE-CONFIG-MAX-HTTP-HEADER",
+    "documentation_context": "Spring Boot 3.0: server.max-http-header-size to server.max-http-request-header-size",
+    "original_code": "server.max-http-header-size=4096\nserver.port=9090",
+    "target_code": "server.max-http-request-header-size=4096\nserver.port=9090",
+    "validation_expectations": "Server header property updated",
+    "license": "Apache-2.0",
+    "provenance": "SFT Validation Corpus"
+  }
+]

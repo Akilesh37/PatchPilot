@@ -1,0 +1,35 @@
+# Parameter-Efficient Fine-Tuning (PEFT) Configuration for PatchPilot
+model:
+  name_or_path: "Qwen/Qwen2.5-Coder-3B-Instruct"
+  torch_dtype: "bfloat16"
+  device_map: "auto"
+  trust_remote_code: true
+
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+
+training:
+  output_dir: "./checkpoints/patchpilot_qlora"
+  num_train_epochs: 3
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0002
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.05
+  logging_steps: 10
+  save_strategy: "epoch"
+  max_seq_length: 2048
+  seed: 42
+  smoke_test_samples: 5

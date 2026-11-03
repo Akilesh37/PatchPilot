@@ -1,0 +1,14 @@
+{
+  "total_raw": 5,
+  "total_deduped": 5,
+  "train_count": 2,
+  "val_count": 1,
+  "test_count": 2,
+  "repositories": [
+    "auth-service-repo",
+    "cache-service-repo",
+    "customer-service-repo",
+    "order-service-repo"
+  ],
+  "leakage_prevented": true
+}

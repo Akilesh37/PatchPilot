@@ -1,0 +1,72 @@
+[
+  {
+    "example_id": "train-01-payment-entity",
+    "repository_name": "sft-payment-service",
+    "file_path": "src/main/java/com/example/payment/Payment.java",
+    "source_framework_version": "Spring Boot 2.7.18",
+    "target_framework_version": "Spring Boot 3.2.0",
+    "migration_rule_id": "RULE-JAKARTA-EE-PERSISTENCE",
+    "documentation_context": "Spring Boot 3.0 Migration Guide: javax.persistence.* -> jakarta.persistence.*",
+    "original_code": "package com.example.payment;\n\nimport javax.persistence.Entity;\nimport javax.persistence.Id;\nimport javax.persistence.Table;\n\n@Entity\n@Table(name = \"payments\")\npublic class Payment {\n    @Id\n    private String id;\n}",
+    "target_code": "package com.example.payment;\n\nimport jakarta.persistence.Entity;\nimport jakarta.persistence.Id;\nimport jakarta.persistence.Table;\n\n@Entity\n@Table(name = \"payments\")\npublic class Payment {\n    @Id\n    private String id;\n}",
+    "validation_expectations": "Compiles with jakarta.persistence",
+    "license": "Apache-2.0",
+    "provenance": "SFT Synthetic Training Corpus"
+  },
+  {
+    "example_id": "train-02-inventory-servlet",
+    "repository_name": "sft-inventory-service",
+    "file_path": "src/main/java/com/example/inventory/InventoryServlet.java",
+    "source_framework_version": "Spring Boot 2.7.18",
+    "target_framework_version": "Spring Boot 3.2.0",
+    "migration_rule_id": "RULE-JAKARTA-EE-SERVLET",
+    "documentation_context": "Spring Boot 3.0: javax.servlet.* to jakarta.servlet.*",
+    "original_code": "package com.example.inventory;\n\nimport javax.servlet.http.HttpServletRequest;\nimport javax.servlet.http.HttpServletResponse;\n\npublic class InventoryServlet {\n    public void handle(HttpServletRequest req, HttpServletResponse res) {}\n}",
+    "target_code": "package com.example.inventory;\n\nimport jakarta.servlet.http.HttpServletRequest;\nimport jakarta.servlet.http.HttpServletResponse;\n\npublic class InventoryServlet {\n    public void handle(HttpServletRequest req, HttpServletResponse res) {}\n}",
+    "validation_expectations": "Compiles with Servlet 6.0",
+    "license": "Apache-2.0",
+    "provenance": "SFT Synthetic Training Corpus"
+  },
+  {
+    "example_id": "train-03-notification-lifecycle",
+    "repository_name": "sft-notification-service",
+    "file_path": "src/main/java/com/example/notification/NotificationService.java",
+    "source_framework_version": "Spring Boot 2.7.18",
+    "target_framework_version": "Spring Boot 3.2.0",
+    "migration_rule_id": "RULE-JAKARTA-EE-ANNOTATION",
+    "documentation_context": "Spring Boot 3.0: javax.annotation to jakarta.annotation",
+    "original_code": "package com.example.notification;\n\nimport javax.annotation.PostConstruct;\n\npublic class NotificationService {\n    @PostConstruct\n    public void start() {}\n}",
+    "target_code": "package com.example.notification;\n\nimport jakarta.annotation.PostConstruct;\n\npublic class NotificationService {\n    @PostConstruct\n    public void start() {}\n}",
+    "validation_expectations": "Lifecycle compiles cleanly",
+    "license": "Apache-2.0",
+    "provenance": "SFT Synthetic Training Corpus"
+  },
+  {
+    "example_id": "train-04-account-validation",
+    "repository_name": "sft-account-service",
+    "file_path": "src/main/java/com/example/account/AccountDTO.java",
+    "source_framework_version": "Spring Boot 2.7.18",
+    "target_framework_version": "Spring Boot 3.2.0",
+    "migration_rule_id": "RULE-JAKARTA-EE-VALIDATION",
+    "documentation_context": "Spring Boot 3.0: javax.validation to jakarta.validation",
+    "original_code": "package com.example.account;\n\nimport javax.validation.constraints.NotNull;\n\npublic class AccountDTO {\n    @NotNull\n    private String accountId;\n}",
+    "target_code": "package com.example.account;\n\nimport jakarta.validation.constraints.NotNull;\n\npublic class AccountDTO {\n    @NotNull\n    private String accountId;\n}",
+    "validation_expectations": "Bean Validation 3.0 passes",
+    "license": "Apache-2.0",
+    "provenance": "SFT Synthetic Training Corpus"
+  },
+  {
+    "example_id": "train-05-payment-config",
+    "repository_name": "sft-payment-service",
+    "file_path": "src/main/resources/application.properties",
+    "source_framework_version": "Spring Boot 2.7.18",
+    "target_framework_version": "Spring Boot 3.2.0",
+    "migration_rule_id": "RULE-CONFIG-REDIS-PREFIX",
+    "documentation_context": "Spring Boot 3.0: spring.redis -> spring.data.redis",
+    "original_code": "spring.redis.host=redis.internal\nspring.redis.port=6379",
+    "target_code": "spring.data.redis.host=redis.internal\nspring.data.redis.port=6379",
+    "validation_expectations": "Redis properties migrated",
+    "license": "Apache-2.0",
+    "provenance": "SFT Synthetic Training Corpus"
+  }
+]

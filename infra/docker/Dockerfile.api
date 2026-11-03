@@ -1,0 +1,18 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    openjdk-17-jdk \
+    maven \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY pyproject.toml* setup.py* requirements.txt* ./
+RUN pip install --no-cache-dir fastapi uvicorn pydantic sqlalchemy rank-bm25 pytest GitPython javalang rich peft datasets python-multipart
+
+COPY . .
+
+EXPOSE 8000
+CMD ["uvicorn", "apps.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

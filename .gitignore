@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Node
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Database & Logs
+*.db
+*.sqlite
+*.sqlite3
+*.log
+mlruns/
+.env
+
+# Model Weights & large artifacts
+models/
+*.bin
+*.safetensors
+*.pt
+*.pth
+checkpoints/
+
+# Java & Build
+*.class
+target/
+.DS_Store
+
+# Temporary worktrees and execution artifacts
+temp_worktrees/
+temp_execution/
+.coverage
+htmlcov/
+.pytest_cache/
