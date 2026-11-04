@@ -141,3 +141,4 @@ export function RiskBadge({ level = "LOW", score, className = "" }: RiskBadgePro
     </span>
   );
 }
+
