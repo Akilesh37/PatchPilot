@@ -112,15 +112,24 @@ cd apps/web && npm install && cd ../..
 .venv/bin/python3 ml/training/train_lora.py --mode lora --smoke-test --output checkpoints/smoke_test_lora
 ```
 
-### 5. Launch Application
+### 5. Launch Enterprise Developer Workstation
 ```bash
-# Terminal 1: Backend API
-.venv/bin/uvicorn apps.api.main:app --host 0.0.0.0 --port 8000
+# Terminal 1: Backend API (FastAPI)
+.venv/bin/uvicorn apps.api.main:app --host 127.0.0.1 --port 8000
 
-# Terminal 2: Frontend Web Dashboard
+# Terminal 2: Developer Workstation Frontend (Next.js 16)
 cd apps/web && npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+#### Workstation UI Architecture
+The PatchPilot frontend is engineered as a high-density, professional developer workstation with neutral graphite surfaces (`zinc-950`/`slate-900`), crisp 1px borders, and no decorative AI gradients:
+- **Overview:** Real-time operational metrics with strict empty-state logic (no fabricated pass rates), workspace summary, repository launchpad, and clearly demarcated empirical benchmarks ($N=10$).
+- **Repository Analysis:** Code intelligence inspector powered by JDK Compiler Tree AST parser, displaying deprecated Spring Security APIs, Jakarta EE namespace collisions, and downstream impact graphs.
+- **Migration Planner:** Structured `MigrationOperation` workbench with rule IDs, code targets, rationales, official documentation citations, and risk classifications.
+- **Code Review & Diffs:** GitHub/IDE-style line-by-line unified diff viewer with addition/deletion highlighting, file navigator, reviewer signature, and approval/rejection workflows.
+- **Verification & Sandbox:** Sandbox execution telemetry (Tier 2 Hardened Subprocess, 2GB RAM / 2 Cores, network-isolated), terminal build console, and autonomous diagnostic repair loop timeline.
+- **History & Rollback:** Execution audit trail, 1-click transactional checkpoint rollback, and policy-gated GitHub Pull Request export.
 
 ---
 

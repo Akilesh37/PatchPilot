@@ -225,6 +225,15 @@ export async function fetchMigration(migrationId: string): Promise<Migration> {
   return res.json();
 }
 
+export async function fetchMigrations(projectId?: string): Promise<Migration[]> {
+  const url = projectId
+    ? `${API_BASE_URL}/api/projects/${projectId}/migrations`
+    : `${API_BASE_URL}/api/migrations`;
+  const res = await fetch(url);
+  if (!res.ok) return [];
+  return res.json();
+}
+
 export async function verifyMigration(migrationId: string, maxRepairAttempts: number = 2): Promise<VerificationRun> {
   const res = await fetch(`${API_BASE_URL}/api/migrations/${migrationId}/verify`, {
     method: "POST",

@@ -349,6 +349,16 @@ def create_migration(
 
     return migration
 
+@app.get("/api/projects/{project_id}/migrations", response_model=List[MigrationResponse])
+def get_project_migrations(project_id: str, db: Session = Depends(get_db)):
+    migrations = db.query(Migration).filter(Migration.project_id == project_id).order_by(Migration.created_at.desc()).all()
+    return migrations
+
+@app.get("/api/migrations", response_model=List[MigrationResponse])
+def get_all_migrations(db: Session = Depends(get_db)):
+    migrations = db.query(Migration).order_by(Migration.created_at.desc()).limit(50).all()
+    return migrations
+
 @app.get("/api/migrations/{migration_id}", response_model=MigrationResponse)
 def get_migration(migration_id: str, db: Session = Depends(get_db)):
     migration = db.query(Migration).filter(Migration.id == migration_id).first()
