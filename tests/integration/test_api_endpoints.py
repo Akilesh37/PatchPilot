@@ -7,6 +7,14 @@ from apps.api.database import init_db
 init_db()
 client = TestClient(app)
 
+def test_root_endpoint():
+    response = client.get("/")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["service"] == "PatchPilot API"
+    assert data["status"] == "online"
+    assert "/docs" in data["documentation"]
+
 def test_health_check():
     response = client.get("/health")
     assert response.status_code == 200

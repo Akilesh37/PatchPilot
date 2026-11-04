@@ -91,7 +91,24 @@ def record_audit(db: Session, project_id: Optional[str], migration_id: Optional[
     db.add(event)
     db.commit()
 
-# --- Health Endpoint ---
+# --- Root & Health Endpoints ---
+@app.get("/")
+def root():
+    return {
+        "service": "PatchPilot API",
+        "status": "online",
+        "version": "1.0.0",
+        "documentation": "/docs",
+        "health": "/health",
+        "endpoints": {
+            "rules": "/api/rules",
+            "projects": "/api/projects",
+            "migrations": "/api/migrations",
+            "evaluations": "/api/evaluations"
+        },
+        "message": "PatchPilot Backend API is online. Access Swagger UI at /docs."
+    }
+
 @app.get("/health")
 def health_check():
     return {
