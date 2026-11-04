@@ -1,0 +1,67 @@
+# Git & VCS
+.git/
+.gitignore
+.github/
+
+# Python Virtual Environments & Caches
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js & Frontend Artifacts (handled separately on Vercel)
+node_modules/
+apps/web/node_modules/
+apps/web/.next/
+apps/web/out/
+apps/web/build/
+.next/
+
+# Secrets & Local Environment Overrides
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.token
+
+# Databases, Storage & Logs
+*.db
+*.sqlite
+*.sqlite3
+patchpilot.db
+data_storage/
+*.log
+mlruns/
+
+# Large Model Checkpoints & Training Artifacts
+checkpoints/
+models/
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Temporary Execution & Worktrees
+temp_worktrees/
+temp_execution/
+
+# Build Targets (Maven)
+target/
+datasets/fixtures/*/target/
+*.class
+
+# IDE & OS Metadata
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+

@@ -11,7 +11,7 @@ import {
   Layers,
 } from "lucide-react";
 import { StatusBadge } from "../ui/StatusBadge";
-import { Migration } from "../../lib/api";
+import { Migration, API_BASE_URL } from "../../lib/api";
 
 interface WorkspaceHeaderProps {
   currentMigration: Migration | null;
@@ -91,7 +91,7 @@ export function WorkspaceHeader({
 
         {/* API Docs link */}
         <a
-          href="http://127.0.0.1:8000/docs"
+          href={`${API_BASE_URL}/docs`}
           target="_blank"
           rel="noreferrer"
           title="Open FastAPI Swagger Documentation"

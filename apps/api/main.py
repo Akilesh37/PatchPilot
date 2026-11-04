@@ -47,14 +47,31 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Enable CORS for Next.js web application
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+# Enable CORS for Next.js web application via FRONTEND_ORIGINS
+frontend_origins_raw = os.getenv(
+    "FRONTEND_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000,https://*.vercel.app"
 )
+frontend_origins = [orig.strip() for orig in frontend_origins_raw.split(",") if orig.strip()]
+
+if "*" in frontend_origins:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+else:
+    vercel_regex = r"^https:\/\/.*\.vercel\.app$" if any("vercel.app" in o for o in frontend_origins) else None
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=frontend_origins,
+        allow_origin_regex=vercel_regex,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 # Initialize engines
 retrieval_service = DocumentationRetrievalService()
@@ -766,3 +783,8 @@ def create_github_pull_request(
         base_branch=payload.base_branch or "main",
         verification_passed=verification_passed
     )
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.getenv("PORT", "8000"))
+    uvicorn.run("apps.api.main:app", host="0.0.0.0", port=port, reload=False)
